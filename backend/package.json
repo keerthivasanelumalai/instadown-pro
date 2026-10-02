@@ -1,0 +1,18 @@
+{
+  "name": "instadown-pro-backend",
+  "version": "3.0.0",
+  "private": true,
+  "description": "InstaDown Pro backend with Supabase Google Auth and yt-dlp/FFmpeg",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.5",
+    "express": "^4.21.2"
+  }
+}

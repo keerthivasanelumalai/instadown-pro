@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InstaDown Pro — Fast Instagram &amp; YouTube Downloader</title>
+  <meta name="description"
+    content="Download videos from Instagram and YouTube in full quality up to 4K and MP3 audio. Fast, simple, and clean." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F97316'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z'/></svg>" />
+</head>
+
+<body>
+  <!-- Ambient backdrop -->
+  <div class="bg-pattern" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+  </div>
+
+  <div id="app" class="app-layout">
+    <!-- Top Navigation -->
+    <header class="navbar" role="banner">
+      <div class="nav-container">
+        <!-- Logo -->
+        <a class="nav-brand" href="/" aria-label="InstaDown Pro Home">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </div>
+          <span class="brand-name">InstaDown<span class="brand-pro">PRO</span></span>
+        </a>
+
+        <!-- Center Nav Navigation items -->
+        <nav class="nav-links" aria-label="Main menu">
+          <button class="nav-link-btn active" id="navInstagram" type="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Instagram</span>
+          </button>
+          <button class="nav-link-btn" id="navYouTube" type="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+            <span>YouTube</span>
+          </button>
+          <button class="nav-link-btn" id="navHistory" type="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </button>
+        </nav>
+
+        <!-- Right: Theme Switcher & User Account -->
+        <div class="nav-actions">
+          <!-- Theme Toggle -->
+          <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle theme" title="Toggle dark/light mode">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- User Menu (when signed in) -->
+          <div class="user-menu" id="userMenu" style="display:none">
+            <button class="user-avatar-btn" id="userAvatarBtn" aria-haspopup="true" aria-expanded="false" aria-label="User account menu">
+              <div class="user-avatar" id="navAvatar">U</div>
+              <span class="user-name" id="navUsername">User</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="user-dropdown" id="userDropdown" role="menu">
+              <div class="dropdown-header">
+                <div class="dropdown-username" id="dropdownName">User</div>
+                <div class="dropdown-email" id="dropdownEmail">user@example.com</div>
+                <div class="dropdown-stat" id="dropdownStat">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span><strong id="dropdownDownloads">0</strong> downloads</span>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="historyDropdownBtn" role="menuitem">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Download History</span>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item danger" id="logoutBtn" role="menuitem">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sign In Button (when signed out) -->
+          <a href="/auth.html" class="btn-signin" id="loginNavBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Sign in</span>
+          </a>
+
+          <!-- Mobile menu toggle -->
+          <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-content">
+        <button class="mobile-nav-link active" id="mobNavInstagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram Downloader
+        </button>
+        <button class="mobile-nav-link" id="mobNavYouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+          </svg>
+          YouTube Downloader
+        </button>
+        <button class="mobile-nav-link" id="mobNavHistory">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Download History
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-content" role="main">
+      <div class="content-wrapper">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <h1 class="hero-heading">
+            Download Your <span class="gradient-text">Videos</span>
+          </h1>
+          <p class="hero-subheading">
+            Fast, simple downloads from Instagram and YouTube.
+          </p>
+
+          <!-- Platform Segmented Tabs -->
+          <div class="platform-segmented" role="tablist" aria-label="Media Platform">
+            <div class="platform-indicator" id="platformIndicator"></div>
+            <button class="platform-tab active" id="tabInstagram" role="tab" aria-selected="true" data-platform="instagram">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Instagram</span>
+            </button>
+            <button class="platform-tab" id="tabYouTube" role="tab" aria-selected="false" data-platform="youtube">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+              <span>YouTube</span>
+            </button>
+          </div>
+
+          <!-- YouTube Quality Selection (Visible only when YouTube tab is active) -->
+          <div class="quality-selector-wrap" id="ytQualityBar" style="display:none">
+            <span class="quality-label">Format:</span>
+            <div class="quality-pills" role="radiogroup" aria-label="YouTube format selection">
+              <button class="q-pill sel" type="button" role="radio" aria-checked="true" data-quality="bestvideo[height<=2160]+bestaudio/best" data-type="video" title="Download in 4K resolution if available">
+                <span class="q-badge">4K</span>
+                <span>Ultra HD</span>
+              </button>
+              <button class="q-pill" type="button" role="radio" aria-checked="false" data-quality="bestvideo[height<=1080]+bestaudio/best[height<=1080]" data-type="video">
+                <span class="q-badge">1080p</span>
+                <span>Full HD</span>
+              </button>
+              <button class="q-pill" type="button" role="radio" aria-checked="false" data-quality="bestvideo[height<=720]+bestaudio/best[height<=720]" data-type="video">
+                <span class="q-badge">720p</span>
+                <span>HD</span>
+              </button>
+              <button class="q-pill" type="button" role="radio" aria-checked="false" data-quality="bestaudio/best" data-type="audio" id="pillAudio">
+                <span class="q-badge">MP3</span>
+                <span>Audio</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Downloader Box -->
+          <div class="downloader-card" id="downloaderCard">
+            <!-- Auth Required Banner (shown only when unauthenticated) -->
+            <div class="auth-banner" id="authBanner" style="display:none">
+              <div class="auth-banner-content">
+                <div class="auth-banner-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <div class="auth-banner-text">
+                  <h3>Sign in with Google to download</h3>
+                  <p>Get fast, full-resolution downloads from Instagram and YouTube.</p>
+                </div>
+              </div>
+              <a href="/auth.html" class="btn-primary auth-banner-btn">
+                <span>Continue with Google</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Download Form Section -->
+            <div class="download-form" id="downloadSection">
+              <div class="input-container" id="inputWrapper">
+                <!-- Platform dynamic icon -->
+                <div class="input-platform-icon" id="inputPlatformIcon" aria-hidden="true">
+                  <!-- Instagram Icon Default -->
+                  <svg class="icon-ig" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  <!-- YouTube Icon -->
+                  <svg class="icon-yt" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                  </svg>
+                </div>
+
+                <!-- Input -->
+                <input
+                  id="urlInput"
+                  type="url"
+                  placeholder="Paste your video URL here…"
+                  autocomplete="off"
+                  spellcheck="false"
+                  aria-label="Video URL input"
+                />
+
+                <!-- Clear input button -->
+                <button class="btn-clear-input" id="clearInputBtn" type="button" aria-label="Clear input" style="display:none">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+
+                <!-- Paste button -->
+                <button class="btn-paste" id="pasteBtn" type="button" aria-label="Paste URL from clipboard">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  </svg>
+                  <span id="pasteBtnText">Paste</span>
+                </button>
+              </div>
+
+              <!-- Main Download Action Button -->
+              <button class="btn-download" id="downloadBtn" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span id="btnText">Download</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Loading State Card -->
+          <div class="state-card loader-card" id="loaderCard" role="status" aria-live="polite">
+            <div class="loader-visual">
+              <div class="spinner-ring"></div>
+            </div>
+            <div class="loader-details">
+              <h3 class="loader-heading" id="loaderHeading">Fetching video…</h3>
+              <p class="loader-step" id="loaderStep">Connecting to media server</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error State Card -->
+          <div class="state-card error-card" id="errorCard" role="alert" aria-live="assertive">
+            <div class="error-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <div class="error-content">
+              <h3 class="error-title">Unable to fetch video</h3>
+              <p class="error-message" id="errorMsg">Please ensure the URL is valid and the video is publicly accessible.</p>
+              <button class="btn-secondary btn-sm" id="errorRetryBtn" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                Try Again
+              </button>
+            </div>
+          </div>
+
+          <!-- Preview & Success State Card -->
+          <div class="state-card result-card" id="resultCard" role="region" aria-label="Media Preview and Download" aria-live="polite">
+            <div class="result-layout">
+              <!-- Thumbnail preview column -->
+              <div class="result-media-col">
+                <div class="media-thumb-wrap" id="mediaPreview">
+                  <!-- Thumbnail image injected dynamically -->
+                </div>
+              </div>
+
+              <!-- Details & actions column -->
+              <div class="result-info-col">
+                <div class="result-header">
+                  <span class="status-badge" id="statusBadge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Video Ready
+                  </span>
+                  <span class="meta-tag" id="platformMetaTag">Instagram Video</span>
+                </div>
+
+                <h3 class="media-title" id="mediaTitle">Video Title</h3>
+                <p class="media-desc" id="mediaDesc" style="display:none"></p>
+
+                <!-- Metadata Row (Duration, Format, Resolution, Size) -->
+                <div class="meta-specs" id="metaSpecs">
+                  <div class="spec-item" id="specResolution">
+                    <span class="spec-name">Quality</span>
+                    <span class="spec-val" id="specResolutionVal">1080p HD</span>
+                  </div>
+                  <div class="spec-item" id="specDuration">
+                    <span class="spec-name">Duration</span>
+                    <span class="spec-val" id="specDurationVal">--:--</span>
+                  </div>
+                  <div class="spec-item" id="specFormat">
+                    <span class="spec-name">Format</span>
+                    <span class="spec-val" id="specFormatVal">MP4</span>
+                  </div>
+                  <div class="spec-item" id="specSize">
+                    <span class="spec-name">Size</span>
+                    <span class="spec-val" id="specSizeVal">-- MB</span>
+                  </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="result-actions">
+                  <a class="btn-primary btn-dl-final" id="downloadLink" href="#" download>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span id="finalDlText">Download Video</span>
+                  </a>
+
+                  <button class="btn-secondary" id="copyUrlBtn" type="button" title="Copy download link">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span>Copy Link</span>
+                  </button>
+
+                  <button class="btn-secondary" id="resetBtn" type="button" title="Download another video">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="1 4 1 10 7 10"></polyline>
+                      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                    <span>Download Another</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="app-footer" role="contentinfo">
+      <div class="footer-container">
+        <p class="footer-copy">
+          &copy; 2026 InstaDown Pro &middot; Fast media downloader for personal use.
+        </p>
+        <div class="footer-links">
+          <a href="https://help.instagram.com/581066165581870" target="_blank" rel="noopener noreferrer">Instagram Terms</a>
+          <span>&middot;</span>
+          <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Download History Modal -->
+  <div class="modal-overlay" id="historyModal" role="dialog" aria-modal="true" aria-labelledby="historyModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <h2 class="modal-title" id="historyModalTitle">Download History</h2>
+        </div>
+        <button class="btn-icon modal-close-btn" id="closeHistoryModal" aria-label="Close download history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Search in History -->
+      <div class="history-search-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="historySearchInput" placeholder="Search history by title or URL..." autocomplete="off" />
+      </div>
+
+      <div class="modal-body" id="historyBody">
+        <div class="history-loading">
+          <div class="spinner-ring sm"></div>
+          <span>Loading download history…</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Dependencies & Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth-client.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
