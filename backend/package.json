@@ -5,8 +5,9 @@
   "description": "InstaDown Pro backend with Supabase Google Auth and yt-dlp/FFmpeg",
   "main": "server.js",
   "scripts": {
-    "start": "pip3 install --break-system-packages -r requirements.txt && export PATH=\"$HOME/.local/bin:$PATH\" && yt-dlp --version && node server.js",,
-    "dev": "node server.js"
+  "start": "pip3 install --break-system-packages -r requirements.txt && export PATH=\"$HOME/.local/bin:$PATH\" && yt-dlp --version && node server.js",
+  "dev": "node server.js"
+},
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
